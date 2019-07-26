@@ -9,7 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <nav>
-    <%= link_to "Home", root_path %>    
+    <%= link_to "Home", root_path %>
+    <%= link_to "All Users", users_path %>
+    <%= link_to "New User", new_user_path %>
+    <%= link_to "All Posts", posts_path %>
+    <%= link_to "New Post", new_post_path %>    
   </nav>
   <body>
     <%= yield %>
