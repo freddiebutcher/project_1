@@ -1,5 +1,17 @@
 # README
 
+Variable References
+@user - find user record based on db ID
+@post - find post record based on db ID
+user - reference to individual DB record
+
+NOTES
+Spent about two hours trying to debug seeds.db
+building frame of db first - similar to artists/works
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
