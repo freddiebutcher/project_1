@@ -1,7 +1,7 @@
 User.destroy_all
 puts "Creating users"
-u1 = User.create :email_address => 'freddiebutcher@gmail.com', :password => 'chicken', :username => 'fcjb', :first_name => 'Freddie', :last_name => 'Butcher', :user_bio => 'Freddie Butcher lives in Sydney'
-u2 = User.create :email_address => 'sophie.dodson@ymail.com', :password => 'chicken', :username => 'scd', :first_name => 'Sophie', :last_name => 'Dodson', :user_bio => 'Sophie Dodson lives in Sydney'
+u1 = User.create :email_address => 'freddiebutcher@gmail.com', :username => 'fcjb', :first_name => 'Freddie', :last_name => 'Butcher', :user_bio => 'Freddie Butcher lives in Sydney'
+u2 = User.create :email_address => 'sophie.dodson@ymail.com', :username => 'scd', :first_name => 'Sophie', :last_name => 'Dodson', :user_bio => 'Sophie Dodson lives in Sydney'
 
 Post.destroy_all
 puts "Creating posts"

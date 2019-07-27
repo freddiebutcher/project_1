@@ -34,7 +34,7 @@ end
 
 private
 def post_params
-  params.permit(:episode_name, :show_name, :episode_description, :pod_link, :img_link)
+  params.require(:post).permit(:episode_name, :show_name, :episode_description, :pod_link, :img_link)
 end
 
 end

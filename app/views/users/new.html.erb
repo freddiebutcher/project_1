@@ -1,4 +1,17 @@
 <h1>New User</h1>
 <p>Add a new user</p>
 
-<%= render :partial => 'form' %>
+<%= form_for @user do |f| %>
+
+<%= f.label :email_address %>
+<%= f.text_field :email_address %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.label :password_confirmation %>
+<%= f.password_field :password_confirmation %>
+
+<%= f.submit "Sign up" %>
+
+<% end %>

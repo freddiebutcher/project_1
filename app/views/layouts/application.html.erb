@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+    <body>
   <h1>Podsta</h1>
   <h2>Podcast recommendations</h2>
   <nav>
@@ -20,16 +21,12 @@
 
 <div class='login'>
   <ul>
-    <!-- IF ERROR CHECK ECHO TAGS -->
     <li><%= link_to("Sign Up", new_user_path) %></li>
     <li><%= link_to("Sign In", login_path) %></li>
     <li><%= link_to("Log out", login_path, :method => :delete) %></li>
   </ul>
 </div>
 
-
-
-  <body>
     <%= yield %>
   </body>
 </html>
