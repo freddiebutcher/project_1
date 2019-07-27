@@ -1,2 +1,18 @@
-<h1>Session#new</h1>
-<p>Find me in app/views/session/new.html.erb</p>
+<h1>Log in</h1>
+
+
+<p>
+  <%= flash[:error_message] %>
+</p>
+
+<%= form_tag login_path do %>
+
+  <%= label_tag :email_address %>
+  <%= email_field_tag :email_address %>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+
+  <%=  submit_tag "Log in" %>
+
+<% end %>

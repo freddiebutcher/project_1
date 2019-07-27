@@ -4,9 +4,10 @@
 <% @users.each do |user| %>
 
 <ul>
-  <li>Handle: <%= link_to user.username, user %></li>
+  <li>Username: <%= link_to user.username, user %></li>
   <li>First name: <%= user.first_name %></li>
   <li>Last name: <%= user.last_name %></li>
+  <li>Email: <%= user.email_address %></li>
   <li>User bio: <%= user.user_bio %></li>
 </ul>
 <% end %>
