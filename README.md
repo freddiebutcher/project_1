@@ -6,10 +6,10 @@ Variable References
 user - reference to individual DB record
 
 NOTES
-Spent about two hours trying to debug seeds.db
-building frame of db first - similar to artists/works
-
-
+- Spent about two hours trying to debug seeds.db
+- Building frame of db first - similar to artists/works
+- Forgot to add user images into DB
+- Annotate doesn't work
 
 
 This README would normally document whatever steps are necessary to get the
