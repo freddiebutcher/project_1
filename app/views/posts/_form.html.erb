@@ -1,12 +1,13 @@
-<%= form_for @artist do |f| %>
-<%= f.label :email_address, :required => true %>
-<%= f.text_field :email_address, :required => true %>
-<%= f.label :password, :required => true %>
-<%= f.text_field :password, :required => true %>
-<%= f.label :first_name, %>
-<%= f.text_field :first_name, %>
-<%= f.label :last_name, %>
-<%= f.text_field :last_name, %>
-<%= f.label :user_bio, %>
-<%= f.text_field :user_bio, %>
-<%= end %>
+<%= form_for @post do |f| %>
+<%= f.label :episode_name, :required => true %>
+<%= f.text_field :episode_name, :required => true %>
+<%= f.label :show_name %>
+<%= f.text_field :show_name %>
+<%= f.label :episode_description %>
+<%= f.text_field :episode_description %>
+<%= f.label :pod_link %>
+<%= f.text_field :pod_link %>
+<%= f.label :img_link %>
+<%= f.text_field :img_link %>
+<%= f.submit %>
+<% end %>

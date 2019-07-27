@@ -1,2 +1,13 @@
-<h1>User Page</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.username %></h1>
+
+    <ul>
+      <li>First Name: <%= @user.first_name %></li>
+      <li>Last Name: <%= @user.last_name %></li>
+      <li>User Bio: <%= @user.user_bio %></li>
+      <li>Email Address: <%= @user.email_address %></li>
+    </ul>
+
+<div class = "controls">
+  <%= link_to "Edit user", edit_user_path(@user) %>
+  <%= button_to "Delete user", @post, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+</div>

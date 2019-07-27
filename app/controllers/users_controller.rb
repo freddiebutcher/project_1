@@ -15,6 +15,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
+  end
+
+  def update
+    user = User.find params[:id]
     user.update user_params
     redirect_to user
   end
@@ -24,13 +28,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find params[:id]
+    user = User.find params[:id]
     user.destroy
+    redirect_to users_path
   end
 
 private
   def user_params
-    params.require(:email_address, :password).permit(:username, first_name, last_name, user_bio)
+    params.permit(:email_address, :password, :username, :first_name, :last_name, :user_bio)
   end
 
 end
