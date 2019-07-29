@@ -5,7 +5,9 @@
     <title>Podsta</title>
     <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
+
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
           <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
@@ -14,7 +16,7 @@
     <nav class="navbar navbar-light bg-light d-flex">
         <div class="container">
             <div class="logo">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <%= fa_stacked_icon "camera inverse", base: "circle"%>
                         Podsta
                 </a>
@@ -74,11 +76,6 @@
 
     <% end %>
 
-
-
-
-
-
   </ul>
 </div>
 
@@ -91,13 +88,9 @@
     <!-- FOOTER -->
     <footer class="container footer">
         <nav class="navbar d-flex">
-            <ul>
-                <li>ABOUT US</li>
-                <li>SUPPORT</li>
-                <li>PROFILES</li>
-            </ul>
             <p>© 2019 Podsta</p>
-        </nav </footer>
+        </nav>
+    </footer>
 </body>
 
 </html>
