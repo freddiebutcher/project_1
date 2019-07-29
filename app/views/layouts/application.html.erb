@@ -13,7 +13,7 @@
 
 <body>
     <!-- NAV BAR -->
-    <nav class="navbar navbar-light bg-light d-flex">
+    <nav class='navbar navbar-light bg-light d-flex'>
         <div class="container">
             <div class="logo">
                 <a class="navbar-brand" href="/">
@@ -21,16 +21,69 @@
                         Podsta
                 </a>
             </div>
-            <div class="m-auto">
+
+            <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+
+            <!-- <div class="m-auto">
                 <form class="form-inline search-form">
                     <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
                 </form>
+            </div> -->
+            <!-- <div class='user-section'>
+                <a class='fa fa-compass'>Sign in</a>
+                <a class='fa fa-heart'></a>
+                <a class='fa fa-user'></a>
+            </div> -->
+
+            <div class='user-section'>
+              <ul>
+
+                <% if @current_user.present? %>
+
+                <!-- User profile -->
+                <li><%= link_to(user_path(@current_user)) do %>
+                  <a class="fa fa-user" aria-hidden="true"></a>
+                  <% end %></li>
+
+                <!-- Sign out -->
+                <li><%= link_to("Sign Out", login_path, :method => :delete) %>
+                  </li>
+
+                <!-- Edit user profile -->
+                <li><%= link_to "Edit Profile", edit_user_path %></li>
+
+                <% else %>
+
+                <!-- Sign up -->
+                <li><%= link_to(new_user_path) do %>
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </li>
+                <% end %>
+
+                <!-- Sign in -->
+                <li><%= link_to(login_path) do %>
+                  <i class="fa fa-sign-in" aria-hidden="true"></i>
+                  <% end %>
+                </li>
+
+                <% end %>
+
+              </ul>
             </div>
-            <div class="user-section">
-                <a><i class="fa fa-compass" /></a>
-                <a><i class="fa fa-heart" /></a>
-                <a><i class="fa fa-user" /></a>
-            </div>
+
         </div>
     </nav>
 
@@ -43,41 +96,7 @@
   </nav>
 
 
-<div class='login'>
-  <ul>
 
-    <% if @current_user.present? %>
-
-    <!-- User profile -->
-    <li><%= link_to(user_path(@current_user)) do %>
-      <i class="fa fa-user" aria-hidden="true"></i>
-      <% end %></li>
-
-    <!-- Sign out -->
-    <li><%= link_to("Sign Out", login_path, :method => :delete) %>
-      </li>
-
-    <!-- Edit user profile -->
-    <li><%= link_to "Edit Profile", edit_user_path %></li>
-
-    <% else %>
-
-    <!-- Sign up -->
-    <li><%= link_to(new_user_path) do %>
-      <i class="fa fa-user-plus" aria-hidden="true"></i>
-    </li>
-    <% end %>
-
-    <!-- Sign in -->
-    <li><%= link_to(login_path) do %>
-      <i class="fa fa-sign-in" aria-hidden="true"></i>
-      <% end %>
-    </li>
-
-    <% end %>
-
-  </ul>
-</div>
 
 
     <!-- MAIN CONTENT -->
