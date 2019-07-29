@@ -1,32 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Podsta</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-    <body>
-  <h1>Podsta</h1>
-  <h2>Podcast recommendations</h2>
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-light bg-light d-flex">
+        <div class="container">
+            <div class="logo">
+                <a class="navbar-brand" href="#">
+                    <%= fa_stacked_icon "camera inverse", base: "circle"%>
+                        Podsta
+                </a>
+            </div>
+            <div class="m-auto">
+                <form class="form-inline search-form">
+                    <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
+                </form>
+            </div>
+            <div class="user-section">
+                <a><i class="fa fa-compass"></a>
+                <a><i class="fa fa-heart"></a>
+                <a><i class="fa fa-user"></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LINKAGE FROM DATABASE SETUP -->
   <nav>
     <%= link_to "Home", root_path %>
     <%= link_to "All Users", users_path %>
-    <%= link_to "New User", new_user_path %>
     <%= link_to "All Posts", posts_path %>
     <%= link_to "New Post", new_post_path %>
   </nav>
 
+
 <div class='login'>
   <ul>
-    <li><%= link_to("Sign Up", new_user_path) %></li>
-    <li><%= link_to("Sign In", login_path) %></li>
-    <li><%= link_to("Log out", login_path, :method => :delete) %></li>
+
+    <% if @current_user.present? %>
+
+    <!-- User profile -->
+    <li><%= link_to(user_path(@current_user)) do %>
+      <i class="fa fa-user-plus" aria-hidden="true"></i>
+      <% end %></li>
+
+    <!-- Sign out -->
+    <li><%= link_to("Sign Out", login_path, :method => :delete) %>
+      </li>
+
+    <% else %>
+
+    <!-- Sign up -->
+    <li><%= link_to(new_user_path) do %>
+      <i class="fa fa-user-plus" aria-hidden="true"></i>
+    </li>
+    <% end %>
+
+    <!-- Sign in -->
+    <li><%= link_to(login_path) do %>
+      <i class="fa fa-sign-in" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    
+    <% end %>
+
+
+
+
+
+
   </ul>
 </div>
 
-    <%= yield %>
-  </body>
+
+    <!-- MAIN CONTENT -->
+    <main class="container" style="min-height: 500px;">
+        <%= yield %>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="container footer">
+        <nav class="navbar d-flex">
+            <ul>
+                <li>ABOUT US</li>
+                <li>SUPPORT</li>
+                <li>PROFILES</li>
+            </ul>
+            <p>© 2019 Podsta</p>
+        </nav </footer>
+</body>
+
 </html>
