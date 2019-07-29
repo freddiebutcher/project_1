@@ -11,3 +11,24 @@
   <%= link_to "Edit user", edit_user_path(@user) %>
   <%= button_to "Delete user", @post, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
 </div>
+
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-4 avatar">
+      <div class="wrapper">
+        <img src="">
+      </div>
+    </div>
+
+    <div class="col-md-8 basic-info">
+      <div class="user-wrapper">
+        <h2 class="username">fbutcher</h2>
+        <a class="edit-profile">
+          <button>Edit Profile</button>
+        </a>
+      </div>
+      <ul class="posts">
+        <li><span>12</span> posts</li>
+        <li><span>195</span> followers</li>
+        <li><span>345</span> following</li>
+      </ul>

@@ -5,7 +5,7 @@
     <title>Podsta</title>
     <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
           <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
@@ -25,9 +25,9 @@
                 </form>
             </div>
             <div class="user-section">
-                <a><i class="fa fa-compass"></a>
-                <a><i class="fa fa-heart"></a>
-                <a><i class="fa fa-user"></a>
+                <a><i class="fa fa-compass" /></a>
+                <a><i class="fa fa-heart" /></a>
+                <a><i class="fa fa-user" /></a>
             </div>
         </div>
     </nav>
@@ -48,12 +48,15 @@
 
     <!-- User profile -->
     <li><%= link_to(user_path(@current_user)) do %>
-      <i class="fa fa-user-plus" aria-hidden="true"></i>
+      <i class="fa fa-user" aria-hidden="true"></i>
       <% end %></li>
 
     <!-- Sign out -->
     <li><%= link_to("Sign Out", login_path, :method => :delete) %>
       </li>
+
+    <!-- Edit user profile -->
+    <li><%= link_to "Edit Profile", edit_user_path %></li>
 
     <% else %>
 
@@ -68,7 +71,7 @@
       <i class="fa fa-sign-in" aria-hidden="true"></i>
       <% end %>
     </li>
-    
+
     <% end %>
 
 

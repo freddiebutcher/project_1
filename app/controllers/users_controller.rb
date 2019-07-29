@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-#   before_action :check_for_login, :only => [:edit, :update]
-#   before_action :check_for_admin, :only => [:index]
+  before_action :check_for_login, :only => [:edit, :update]
+  # before_action :check_for_admin, :only => [:index]
 
   def index
     @users = User.all
@@ -21,12 +21,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:id]
+    @user = @current_user
   end
 
   def update
-    user = User.find params[:id]
-    user.update user_params
+    @current_user.update user_params
     redirect_to user
   end
 

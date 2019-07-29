@@ -26,7 +26,8 @@
 
 Rails.application.routes.draw do
   root :to => 'posts#index'
-  resources :users
+  resources :users, :only => [:index, :new, :create, :show, :update]
+  get '/users/edit' => "users#edit", :as => :edit_user
   resources :posts
 
   get '/login' => 'session#new'
