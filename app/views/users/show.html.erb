@@ -8,6 +8,16 @@
       <li>Email Address: <%= @user.email_address %></li>
     </ul>
 
+    <!--Follower stats -->
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+
+    <!--Follow button -->
+    <%= render 'shared/follow_form' if @current_user.present? %>
+
+
+
 <!-- Current user's posts -->
 <p>List of posts</p>
 

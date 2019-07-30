@@ -13,6 +13,8 @@ NOTES
 - Issue with b-crypt
 - Installed Bootstrap and Font Awesome
 
+- Build show_follow page 14.26
+
 
 
 This README would normally document whatever steps are necessary to get the
@@ -58,3 +60,13 @@ Things you may want to cover:
 </div>
 
     <li><%= link_to("Log out", login_path, :method => :delete) %></li>
+
+Advanced Code 14.3.2
+```    # Post.where("user_id IN (?) OR user_id = ?", following_ids, id)
+    following_ids = "SELECT followed_id FROM relationships
+                 WHERE  follower_id = :user_id"
+    Post.where("user_id IN (#{following_ids})
+                 OR user_id = :user_id", user_id: id)
+  end
+
+```    

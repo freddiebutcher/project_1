@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_for_login, :only => [:edit, :update]
+  before_action :check_for_login, :only => [:index, :edit, :update, :following, :followers]
   # before_action :check_for_admin, :only => [:index]
 
 def index
@@ -37,6 +37,20 @@ def destroy
   user = User.find params[:id]
   user.destroy
   redirect_to users_path
+end
+
+def following
+  @title = "Following"
+  @user  = User.find(params[:id])
+  @users = @user.following.paginate(page: params[:page])
+  render 'show_follow'
+end
+
+def followers
+  @title = "Followers"
+  @user  = User.find(params[:id])
+  # @users = @user.followers.paginate(page: params[:page])
+  render 'show_follow'
 end
 
 private

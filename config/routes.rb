@@ -29,6 +29,12 @@ Rails.application.routes.draw do
   resources :users, :only => [:index, :new, :create, :show, :update]
   get '/users/edit' => "users#edit", :as => :edit_user
   resources :posts
+  resources :relationships, only: [:create, :destroy]
+  resources :users do
+  member do
+    get :following, :followers
+  end
+end
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
