@@ -1,3 +1,4 @@
+<!-- User's details -->
 <h1>Username: <%= @user.username %></h1>
 
     <ul>
@@ -7,6 +8,22 @@
       <li>Email Address: <%= @user.email_address %></li>
     </ul>
 
+<!-- Current user's posts -->
+<p>List of posts</p>
+
+<% @user.posts.each do |post| %>
+
+<%= image_tag post.img_link, :class =>'thumb' if post.img_link.present? %>
+<ul>
+  <li>Post owner: <%= link_to post.user_id %></li>
+  <li>Episode name: <%= link_to post.episode_name, post %></li>
+  <li>Show name: <%= post.show_name %></li>
+  <li>Episode Description: <%= post.episode_description %></li>
+  <li>Link: <%= post.pod_link %></li>
+</ul>
+  <% end %>
+
+<!-- Edit user -->
 <div class = "controls">
   <%= link_to "Edit user", edit_user_path(@user) %>
   <%= button_to "Delete user", @post, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
