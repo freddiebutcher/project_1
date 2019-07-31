@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_for_login
+  # before_action :check_for_login
   #:only => [:index, :edit, :update, :destroy, :following, :followers]
   # before_action :check_for_admin, :only => [:index]
 
@@ -43,14 +43,16 @@ end
 def following
   @title = "Following"
   @user  = User.find(params[:id])
-  @users = @user.following.paginate(page: params[:page])
+  @users = @user.following
+  #.paginate(page: params[:page])
   render 'show_follow'
 end
 
 def followers
   @title = "Followers"
   @user  = User.find(params[:id])
-  # @users = @user.followers.paginate(page: params[:page])
+  @users = @user.followers
+  #.paginate(page: params[:page])
   render 'show_follow'
 end
 

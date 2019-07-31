@@ -6,7 +6,14 @@
 
     <ul>
       <li>Welcome: <%= link_to @current_user.username, user_path(@current_user.id) %></li>
+
       <li>User Name: <%= User.find(@post.user_id).username %></li>
+
+      <% if @post.user.present? %>
+        <li>Posted by: <%= link_to @post.user.username, @post.user %></li>
+      <% end %>
+
+
       <li>Show Name: <%= @post.show_name %></li>
       <li>Episode Name: <%= @post.episode_name %></li>
       <li>Episode Description: <%= @post.episode_description %></li>

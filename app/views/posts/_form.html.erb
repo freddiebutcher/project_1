@@ -1,4 +1,4 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, :html => {:multipart => true} do |f| %>
 <%= f.label :episode_name, :required => true %>
 <%= f.text_field :episode_name, :required => true %>
 <%= f.label :show_name %>
