@@ -5,11 +5,25 @@
 <%= cl_image_tag @post.img_link, :class =>'feature' if @post.img_link.present? %>
 
     <ul>
-      <li>Episode Name: <%= @post.episode_name %></li>
+      <li>Welcome: <%= link_to @current_user.username, user_path(@current_user.id) %></li>
+      <li>User Name: <%= User.find(@post.user_id).username %></li>
       <li>Show Name: <%= @post.show_name %></li>
+      <li>Episode Name: <%= @post.episode_name %></li>
       <li>Episode Description: <%= @post.episode_description %></li>
       <li>Podcast Link: <%= @post.pod_link %></li>
     </ul>
+
+    <!-- <audio controls>
+      <source src="https://www.computerhope.com/jargon/m/example.mp3" />
+    </audio> -->
+
+    <div>
+     <a href="<%= @post.pod_link %>" target="_blank">
+       <figure class="image platform-badge">
+         <img src="https://gimletmedia.com/images/platform_badges/spotify.svg" title="Spotify">
+       </figure>
+     </a>
+   </div>
 
 <div class = "controls">
   <%= link_to "Edit post", edit_post_path(@post) %>

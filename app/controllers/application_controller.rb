@@ -9,7 +9,7 @@ def fetch_user
 end
 
 def check_for_login
-  redirect_to root_path unless @current_user.present?
+  redirect_to login_path unless @current_user.present?
 end
 
 def check_for_admin

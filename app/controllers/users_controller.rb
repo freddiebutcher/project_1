@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_for_login, :only => [:index, :edit, :update, :following, :followers]
+  before_action :check_for_login
+  #:only => [:index, :edit, :update, :destroy, :following, :followers]
   # before_action :check_for_admin, :only => [:index]
 
 def index

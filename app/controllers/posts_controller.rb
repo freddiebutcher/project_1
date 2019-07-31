@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  # before_action :check_for_login, :only => [:index, :edit, :update, :following, :followers]
-
+  before_action :check_for_login
+  #:only => [:index, :create, :edit, :update, :destroy, :following, :followers]
 
   def index
     @posts = Post.all
