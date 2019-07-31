@@ -2,7 +2,7 @@
 
 <h2><%= @post.show_name %></h2>
 
-<%= image_tag @post.img_link, :class =>'feature' if @post.img_link.present? %>
+<%= cl_image_tag @post.img_link, :class =>'feature' if @post.img_link.present? %>
 
     <ul>
       <li>Episode Name: <%= @post.episode_name %></li>

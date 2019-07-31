@@ -23,7 +23,7 @@
 
 <% @user.posts.each do |post| %>
 
-<%= image_tag post.img_link, :class =>'thumb' if post.img_link.present? %>
+<%= cl_image_tag post.img_link, :class =>'thumb' if post.img_link.present? %>
 <ul>
   <li>Post owner: <%= link_to post.user_id %></li>
   <li>Episode name: <%= link_to post.episode_name, post %></li>

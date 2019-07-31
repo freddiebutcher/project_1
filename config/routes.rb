@@ -26,8 +26,8 @@
 
 Rails.application.routes.draw do
   root :to => 'posts#index'
-  resources :users, :only => [:index, :new, :create, :show, :update]
   get '/users/edit' => "users#edit", :as => :edit_user
+  resources :users, :only => [:index, :new, :create, :show, :update]
   resources :posts
   resources :relationships, only: [:create, :destroy]
   resources :users do

@@ -1,101 +1,90 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <title>Podsta</title>
-    <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= cloudinary_js_config %>
 
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-
-<body>
-    <!-- NAV BAR -->
+  <body>
+      <!-- NAV BAR -->
     <nav class='navbar navbar-light bg-light d-flex'>
-        <div class="container">
-            <div class="logo">
-                <a class="navbar-brand" href="/">
-                    <%= fa_stacked_icon "camera inverse", base: "circle"%>
-                        Podsta
-                </a>
-            </div>
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="/">
+              <%= fa_stacked_icon "camera inverse", base: "circle"%>
+                  Podsta
+          </a>
 
-            <div class="m-auto">
-                <form class="form-inline search-form">
-                    <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
-                </form>
-            </div>
+              <!-- Search >
+              <div class="m-auto">
+                  <form class="form-inline search-form">
+                      <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
+                  </form>
+              </div>
+              -->
 
-            <!-- <div class='user-section'>
-                <a class='fa fa-compass'>Sign in</a>
-                <a class='fa fa-heart'></a>
-                <a class='fa fa-user'></a>
-            </div> -->
+        <!-- Login / Sign up / Profile / Edit Profile / Sign out -->
+        <div class='#'>
+          <ul>
+            <!-- IF LOGGED IN -->
+              <% if @current_user.present? %>
+            <!-- User profile -->
 
-            <div class='user-section'>
-              <ul>
 
-                <% if @current_user.present? %>
-
-                <!-- User profile -->
-                <li><%= link_to(user_path(@current_user)) do %>
-                  <a class="fa fa-user" aria-hidden="true"></a>
-                  <% end %></li>
-
-                <!-- Sign out -->
-                <li><%= link_to("Sign Out", login_path, :method => :delete) %>
-                  </li>
-
-                <!-- Edit user profile -->
-                <li><%= link_to "Edit Profile", edit_user_path %></li>
-
-                <% else %>
-
-                <!-- Sign up -->
-                <li><%= link_to(new_user_path) do %>
-                  <i class="fa fa-user-plus" aria-hidden="true"></i>
-                </li>
-                <% end %>
-
-                <!-- Sign in -->
-                <li><%= link_to(login_path) do %>
-                  <i class="fa fa-sign-in" aria-hidden="true"></i>
-                  <% end %>
-                </li>
-
-                <% end %>
-
-              </ul>
-            </div>
-
+              <li>Welcome: <%= link_to @current_user.username, user_path(@current_user.id) %></li>
+            <!-- Icon -->
+              <!-- <li><%= link_to(user_path(@current_user)) do %>
+                <a class="fa fa-user" aria-hidden="true"></a>
+              <% end %></li> -->
+            <!-- Edit user profile -->
+              <li><%= link_to "Edit Profile", edit_user_path %></li>
+            <!-- Sign out -->
+              <li><%= link_to("Sign Out", login_path, :method => :delete) %></li>
+            <!-- IF NOT LOGGED IN -->
+            <% else %>
+            <!-- Sign up -->
+            <li>Sign up<%= link_to(new_user_path) do %>
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+            </li>
+            <% end %>
+            <!-- Sign in -->
+            <li>Sign in<%= link_to(login_path) do %>
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
+          <!-- LINKAGE FROM DATABASE SETUP -->
+        <nav>
+          <%= link_to "Users", users_path %>
+          <%= link_to "Posts", posts_path %>
+          <%= link_to "New", new_post_path %>
+        </nav>
         </div>
+      </div>
     </nav>
 
-    <!-- LINKAGE FROM DATABASE SETUP -->
-  <nav>
-    <%= link_to "Home", root_path %>
-    <%= link_to "All Users", users_path %>
-    <%= link_to "All Posts", posts_path %>
-    <%= link_to "New Post", new_post_path %>
-  </nav>
 
 
 
-
-
-    <!-- MAIN CONTENT -->
+      <!-- MAIN CONTENT -->
     <main class="container" style="min-height: 500px;">
-        <%= yield %>
+      <%= yield %>
     </main>
 
-    <!-- FOOTER -->
+      <!-- FOOTER -->
     <footer class="container footer">
-        <nav class="navbar d-flex">
-            <p>© 2019 Podsta</p>
-        </nav>
+      <nav class="navbar d-flex">
+          <p>© 2019 Podsta</p>
+      </nav>
     </footer>
-</body>
+
+  </body>
 
 </html>
