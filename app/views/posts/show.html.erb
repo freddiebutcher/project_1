@@ -1,44 +1,24 @@
-<h1><%= @post.episode_name %></h1>
-
-<h2><%= @post.show_name %></h2>
 
 <div class="card">
+
   <% if @post.user.present? %>
     <li><%= link_to @post.user.username, @post.user %></li>
   <% end %>
+
   <%= cl_image_tag @post.img_link, :class =>'feature' if @post.img_link.present? %>
   <div class="container">
-    <% if @post.user.present? %>
-      <li><%= link_to @post.user.username, @post.user %></li>
-    <% end %>
+
     <li>Show: <%= @post.show_name %></li>
     <li>Episode: <%= @post.episode_name %></li>
     <li>Description: <%= @post.episode_description %></li>
     <li>Link: <%= @post.pod_link %></li>
+
   </div>
-</div>
-
-
-
-<div class="cardimage">
-<%= cl_image_tag @post.img_link, :class =>'feature' if @post.img_link.present? %>
-</div>
-
-<div class="cardtext">
-    <ul>
-      <% if @post.user.present? %>
-        <li><%= link_to @post.user.username, @post.user %></li>
-      <% end %>
-      <li>Show: <%= @post.show_name %></li>
-      <li>Episode: <%= @post.episode_name %></li>
-      <li>Description: <%= @post.episode_description %></li>
-      <li>Link: <%= @post.pod_link %></li>
-    </ul>
 </div>
 
   <div class="spotify">
      <a href="<%= @post.pod_link %>" target="_blank">
-       <figure class="image platform-badge">
+       <figure class="image platform-badge" style="text-align: center;">
          <img src="https://gimletmedia.com/images/platform_badges/spotify.svg" title="Spotify">
        </figure>
      </a>

@@ -50,10 +50,12 @@
     <div class="row">
       <% @user.posts.each do |post| %>
       <div class="col-sm-4 cell" style= "background-image: url(<%= cl_image_path post.img_link unless post.img_link.nil? %>)">
+<div class="listtileul">
       <ul>
-        <li>Post owner: <%= link_to post.user_id %></li>
-        <li>Episode name: <%= link_to post.episode_name, post %></li>
+        <li class="listtile"><%= link_to post.show_name %></li>
+        <li class="listtile"><%= link_to post.episode_name, post %></li>
       </ul>
+      </div>
         <%= link_to "", post %>
       </div>
       <% end %>
