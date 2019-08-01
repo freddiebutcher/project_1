@@ -1,61 +1,67 @@
-<!-- User's details -->
-<h1>Username: <%= @user.username %></h1>
+<!-- Profile section -->
 
-    <ul>
-      <li>First Name: <%= @user.first_name %></li>
-      <li>Last Name: <%= @user.last_name %></li>
-      <li>User Bio: <%= @user.user_bio %></li>
-      <li>Email Address: <%= @user.email_address %></li>
-    </ul>
+<div class="container">
 
-    <!--Follower stats -->
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
+  <div class="profile">
 
-    <!--Follow button -->
-    <%= render 'shared/follow_form' if @current_user.present? %>
+    <div class="profile-image">
 
+      <%= cl_image_tag @user.avatar, :class => "profile-image" unless @user.avatar.nil? %>
+
+    </div>
+
+    <div class="profile-user-settings">
+
+      <h1 class="profile-user-name"><%= @user.username %></h1>
+
+      <%= button_to "Edit profile", edit_user_path(@user), :method => 'get', :class=>"btn profile-edit-btn" %>
+
+    </div>
+
+    <div class="profile-stats">
+
+      <ul>
+        <li><span class="profile-stat-count"><%= @user.posts.count %></span> posts</li>
+        <li><span class="profile-stat-count"><%= @user.followers.count %></span> followers</li>
+        <li><span class="profile-stat-count"><%= @user.following.count %></span> following</li>
+      </ul>
+
+
+    <div class="profile-bio">
+
+      <p><span class="profile-real-name">Email: </span><%= @user.email_address %></p>
+
+      <p><span class="profile-real-name"><%= @user.first_name %> <%= @user.last_name %> </span> <%= @user.user_bio %></p>
+
+      <!--Follow button -->
+      <%= render 'shared/follow_form' if @current_user.present? %>
+
+    </div>
+
+  </div>
+  <!-- End of profile section -->
+
+</div>
+<!-- End of container -->
 
 
 <!-- Current user's posts -->
-<p>List of posts</p>
-
-<% @user.posts.each do |post| %>
-
-<%= cl_image_tag post.img_link, :class =>'thumb' if post.img_link.present? %>
-<ul>
-  <li>Post owner: <%= link_to post.user_id %></li>
-  <li>Episode name: <%= link_to post.episode_name, post %></li>
-  <li>Show name: <%= post.show_name %></li>
-  <li>Episode Description: <%= post.episode_description %></li>
-  <li>Link: <%= post.pod_link %></li>
-</ul>
-  <% end %>
+  <div class="container">
+    <div class="row">
+      <% @user.posts.each do |post| %>
+      <div class="col-sm-4 cell" style= "background-image: url(<%= cl_image_path post.img_link unless post.img_link.nil? %>)">
+      <ul>
+        <li>Post owner: <%= link_to post.user_id %></li>
+        <li>Episode name: <%= link_to post.episode_name, post %></li>
+      </ul>
+        <%= link_to "", post %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
 <!-- Edit user -->
 <div class = "controls">
   <%= link_to "Edit user", edit_user_path(@user) %>
   <%= button_to "Delete user", @post, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
 </div>
-
-<!-- <div class="user-profile">
-  <div class="profile row">
-    <div class="col-md-4 avatar">
-      <div class="wrapper">
-        <img src="">
-      </div>
-    </div>
-
-    <div class="col-md-8 basic-info">
-      <div class="user-wrapper">
-        <h2 class="username">fbutcher</h2>
-        <a class="edit-profile">
-          <button>Edit Profile</button>
-        </a>
-      </div>
-      <ul class="posts">
-        <li><span>12</span> posts</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
-      </ul> -->

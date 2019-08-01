@@ -1,0 +1,145 @@
+<h1>Log in</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <p>
+      <%= flash[:error_message] %>
+    </p>
+
+    <%= form_tag login_path do %>
+
+    <%= label_tag :email_address %>
+    <%= email_field_tag :email_address, :class=>"form-control", :id=>"exampleInputEmail1", :placeholder=>"Enter email"%>
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+
+    <%=  submit_tag "Log in" %>
+
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+
+
+    <!-- Login / Sign up / Profile / Edit Profile / Sign out -->
+    <div class='#'>
+      <ul>
+        <!-- IF LOGGED IN -->
+        <% if @current_user.present? %>
+        <!-- User profile -->
+
+
+        <li>Welcome: <%= link_to @current_user.username, user_path(@current_user.id) %></li>
+        <!-- Icon -->
+        <!-- <li><%= link_to(user_path(@current_user)) do %>
+          <a class="fa fa-user" aria-hidden="true"></a>
+          <% end %></li> -->
+          <!-- Edit user profile -->
+          <li><%= link_to "Edit Profile", edit_user_path %></li>
+          <!-- Sign out -->
+          <li><%= link_to("Sign Out", login_path, :method => :delete) %></li>
+          <!-- List of Users -->
+          <li><%= link_to "Users", users_path %></li>
+          <!-- List of Posts -->
+          <li><%= link_to "Posts", posts_path %></li>
+          <!-- New Post -->
+          <li><%= link_to "New", new_post_path %></li>
+          <!-- IF NOT LOGGED IN -->
+          <%# <% else %>
+          <!-- Sign up -->
+          <li>Sign up<%= link_to(new_user_path) do %>
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+          </li>
+          <% end %>
+          <!-- Sign in -->
+          <li>Sign in<%= link_to(login_path) do %>
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <% end %> %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+
+
+
+
+
+    <h1>New User</h1>
+    <p>Add a new user</p>
+
+    <% if @user.errors.any? %>
+      <ol>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ol>
+    <% end %>
+
+    <%= form_for @user do |f| %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :email_address %>
+    <%= f.text_field :email_address %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.label :user_bio %>
+    <%= f.text_field :user_bio %>
+
+    <%= f.label :avatar %>
+    <%= f.text_field :avatar %>
+
+    <%= f.submit "Sign up" %>
+
+    <% end %>
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+
+            <!-- User profile -->
+            <li class="nav-item">
+              <a>Welcome: <%= link_to @current_user.username, user_path(@current_user.id), :class=>"nav-link js-scroll-trigger" %></a>
+            </li>
+
+            <li class="nav-item">
+              <a><%= link_to "Edit Profile", edit_user_path, :class=>"nav-link js-scroll-trigger" %></a>
+            </li>
+            <li class="nav-item">
+              <a><%= link_to "Sign Out", login_path, :method => :delete, :class=>"nav-link js-scroll-trigger" %></a>
+            </li>
+            <li class="nav-item">
+              <li><%= link_to "Posts", posts_path, :class=>"nav-link js-scroll-trigger" %></li>
+            <li class="nav-item">
+              <li><%= link_to "Users", users_path, :class=>"nav-link js-scroll-trigger" %></li>
+            <li class="nav-item">
+              <li><%= link_to "New", new_post_path, :class=>"nav-link js-scroll-trigger" %></li>
+            </li>
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </nav>

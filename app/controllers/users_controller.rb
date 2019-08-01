@@ -15,6 +15,14 @@ def create
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
+      if params[:file].present?
+        # Then call Cloudinary's upload method, passing in the file in params
+        req = Cloudinary::Uploader.upload(params[:file])
+        # Using the public_id allows us to use Cloudinary's powerful image
+        # transformation methods.
+        @user.avatar = req["public_id"]
+        @user.save
+      end
     redirect_to root_path
   else
     render :new
@@ -27,7 +35,15 @@ end
 
 def update
   @current_user.update user_params
-  redirect_to user
+  if params[:file].present?
+    # Then call Cloudinary's upload method, passing in the file in params
+    req = Cloudinary::Uploader.upload(params[:file])
+    # Using the public_id allows us to use Cloudinary's powerful image
+    # transformation methods.
+    @current_user.avatar = req["public_id"]
+    @current_user.save
+  end
+  redirect_to user_path
 end
 
 def show

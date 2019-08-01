@@ -1,5 +1,4 @@
-<h1>New User</h1>
-<p>Add a new user</p>
+<div class="form">
 
 <% if @user.errors.any? %>
   <ol>
@@ -9,32 +8,48 @@
   </ol>
 <% end %>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:multipart => true} do |f| %>
 
-<%= f.label :username %>
-<%= f.text_field :username %>
+<form>
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, :class=>"form-control", :id=>"username1", :placeholder=>"@username"%>
+  </div>
 
-<%= f.label :first_name %>
-<%= f.text_field :first_name %>
+  <div class="form-group">
+    <%= f.label :email_address %>
+    <%= f.text_field :email_address, :class=>"form-control", :id=>"email1", :placeholder=>"Email address" %>
 
-<%= f.label :last_name %>
-<%= f.text_field :last_name %>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= f.label :password %>
+        <%= f.password_field :password, :class=>"form-control", :id=>"password1", :placeholder=>"Password" %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, :class=>"form-control", :id=>"password_confirmation1", :placeholder=>"Confirm password" %>
+      </div>
+    </div>
 
-<%= f.label :email_address %>
-<%= f.text_field :email_address %>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, :class=>"form-control", :id=>"first_name1", :placeholder=>"First name"%>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, :class=>"form-control", :id=>"last_name1", :placeholder=>"Last name" %>
+      </div>
+    </div>
 
-<%= f.label :password %>
-<%= f.password_field :password %>
+    <div class="form-group">
+      <%= f.label :user_bio %>
+      <%= f.text_field :user_bio, :class=>"form-control", :id=>"user_bio1", :placeholder=>"A little about yourself..."%>
+    </div>
 
-<%= f.label :password_confirmation %>
-<%= f.password_field :password_confirmation %>
+    <%= f.label :avatar %>
+    <%= f.cl_image_upload :avatar %>
 
-<%= f.label :user_bio %>
-<%= f.text_field :user_bio %>
+    <%= f.submit "Sign up" %>
 
-<%= f.label :avatar %>
-<%= f.text_field :avatar %>
-
-<%= f.submit "Sign up" %>
-
-<% end %>
+    <% end %>
