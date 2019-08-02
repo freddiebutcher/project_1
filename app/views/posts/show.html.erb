@@ -7,11 +7,10 @@
 
   <%= cl_image_tag @post.img_link, :class =>'feature' if @post.img_link.present? %>
   <div class="container">
-
-    <li>Show: <%= @post.show_name %></li>
-    <li>Episode: <%= @post.episode_name %></li>
-    <li>Description: <%= @post.episode_description %></li>
-    <li>Link: <%= @post.pod_link %></li>
+    
+    <p><span class="profile-real-name">Show:  </span><%= @post.show_name %></p>
+    <p><span class="profile-real-name">Episode:  </span><%= @post.episode_name %></p>
+    <p><span class="profile-real-name">Description:  </span><%= @post.episode_description %></p>
 
   </div>
 </div>
